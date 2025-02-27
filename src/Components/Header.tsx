@@ -15,7 +15,7 @@ const Header = () => {
               </li>
       </ul>
       
-      <h1>Inloggad: {user ? user.Username : "" }</h1>
+      <h1>{user ? `Inloggad: ${user.Username}` : ""}</h1>
     </header>
   )
 }

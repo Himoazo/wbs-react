@@ -68,7 +68,7 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
 
     useEffect(() => {
         validateToken();
-    }, []);
+    }, [user]);
 
 
     return (
