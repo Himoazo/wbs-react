@@ -20,7 +20,7 @@ export const ProductsProvider: React.FC<ProductProps> = ({children}) => {
           if (!response.ok) { throw Error }
           
           const data = await response.json();
-          console.log(data);
+          
           setProducts(data);
     
         } catch (error) {

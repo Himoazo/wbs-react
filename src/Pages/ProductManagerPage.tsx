@@ -1,23 +1,25 @@
 import { useProductContext } from "../Context/ProductContext"
 import ProductForm from "../Components/ProductForm";
+import ProductComponent from "../Components/ProductComponent";
+
 const ProductManagerPage = () => {
   const { products } = useProductContext();
     return (
       <>
         <ProductForm/>
-        <div>HomePage</div>
+        <div>Product manager</div>
         {
-          products?.map(p =>
-            <div key={p.id}>
-              {p.productName} -
-              {p.price} -
-              {p.quantity}
-              <button>Delete</button>
-          </div>
-        )}
+           products?.map(product => 
+            <ProductComponent 
+              key={product.id} 
+              product={product}
+            />
+          )
+        }
       </>
       
     )
 }
 
 export default ProductManagerPage
+
