@@ -1,9 +1,10 @@
 import { useProductContext } from "../Context/ProductContext"
-
+import ProductForm from "../Components/ProductForm";
 const ProductManagerPage = () => {
   const { products } = useProductContext();
     return (
       <>
+        <ProductForm/>
         <div>HomePage</div>
         {
           products?.map(p =>
