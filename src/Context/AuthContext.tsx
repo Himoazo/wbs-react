@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, ReactNode, useEffect} from "react";
-import { User, Login, /* AuthRes, */ AuthContext } from "../Interfaces/Auth";
+import { User, Login, AuthContext } from "../Interfaces/Auth";
 
 const AuthenticateContext = createContext<AuthContext | null>(null);
 
@@ -26,7 +26,7 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
             const data = await response.json() as User;
 
             localStorage.setItem("token", data.token);
-            setUser(data);
+            setUser({username: data.username, email: data.email, token: data.token});
            
         } catch (error) {
             throw error;
@@ -56,8 +56,8 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setUser({Username: data.username, email: data.email, token: data.token});
+                const data = await response.json() as User;
+                setUser({username: data.username, email: data.email, token: data.token});
                 
             }
         } catch (error) {
@@ -68,7 +68,7 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
 
     useEffect(() => {
         validateToken();
-    }, [user]);
+    }, []);
 
 
     return (
