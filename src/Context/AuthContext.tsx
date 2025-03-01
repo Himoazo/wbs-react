@@ -20,7 +20,12 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
             });
 
             if (!response.ok) {
-                throw new Error("Det gick inte att logga in");
+                if (response.status === 401) {
+                    throw new Error("Felaktigt användarnamn/lösenord");
+                } else {
+                   throw new Error("Det gick inte att logga in, försök igen senare"); 
+                }
+                
             }
 
             const data = await response.json() as User;

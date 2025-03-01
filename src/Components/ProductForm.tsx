@@ -2,7 +2,7 @@ import {  useEffect, useState } from "react";
 import { ProductInterface, FormErros } from "../Interfaces/ProductInterface";
 import { useProductContext } from "../Context/ProductContext"
 
-const ProductForm = ({productToEdit} : {productToEdit: ProductInterface}) => {
+const ProductForm = ({productToEdit} : {productToEdit?: ProductInterface}) => {
     const [addProduct, setCreateProduct] = useState<ProductInterface>({ productName: "", price: 0, quantity: 0 });
     const [formErrors, setFormErrors] = useState<FormErros>({})
 
@@ -79,44 +79,40 @@ const ProductForm = ({productToEdit} : {productToEdit: ProductInterface}) => {
         }
     }
   return (
-    <form onSubmit={validateForm}>
-    <div>
-      <label>Produktnamn:</label>
-      <input
-        type="text"
-        name="productName"
-        value={addProduct.productName}
-        onChange={(event) => setCreateProduct(p => ({ ...p, productName: event.target.value }))}
+    <form onSubmit={validateForm} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
+  <div className="flex flex-col">
+    <label className="text-sm font-medium text-gray-700">Produktnamn:</label>
+    <input type="text" name="productName" value={addProduct.productName}
+      onChange={(event) => setCreateProduct(p => ({ ...p, productName: event.target.value }))}
+      className="mt-1 p-2 border rounded-lg focus:ring focus:ring-blue-300"
+    />
+    {formErrors.productName && <span className="text-sm text-red-500">{formErrors.productName}</span>}
+  </div>
+  
+  <div className="flex flex-col">
+    <label className="text-sm font-medium text-gray-700">Pris:</label>
+    <input type="number" name="price" value={addProduct.price}
+      onChange={(event) => setCreateProduct(p => ({ ...p, price: Number(event.target.value) }))}
+      className="mt-1 p-2 border rounded-lg focus:ring focus:ring-blue-300"
+    />
+    {formErrors.price && <span className="text-sm text-red-500">{formErrors.price}</span>}
+  </div>
+  
+  <div className="flex flex-col">
+    <label className="text-sm font-medium text-gray-700">Saldo:</label>
+    <input type="number" name="quantity" value={addProduct.quantity}
+      onChange={(event) => setCreateProduct(p => ({ ...p, quantity: Number(event.target.value) }))}
+      className="mt-1 p-2 border rounded-lg focus:ring focus:ring-blue-300"/>
+    {formErrors.quantity && <span className="text-sm text-red-500">{formErrors.quantity}</span>}
+  </div>
+  
+  <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" >
+    {productToEdit ? "Redigera" : "Lägg till produkt"}
+  </button>
 
-      />
-      {formErrors.productName && <span>{formErrors.productName}</span>}
-    </div>
-    
-    <div>
-      <label>Pris:</label>
-      <input
-        type="number"
-        name="price"
-        value={addProduct.price}
-        onChange={(event) => setCreateProduct(p => ({ ...p, price: Number(event.target.value) }))}
-      />
-      {formErrors.price && <span>{formErrors.price}</span>}
-    </div>
-    
-    <div>
-      <label>Saldo:</label>
-      <input
-        type="number"
-        name="quantity"
-        value={addProduct.quantity}
-        onChange={(event)=> setCreateProduct(p =>({...p, quantity: Number(event.target.value)}))}
-      />
-      {formErrors.quantity && <span>{formErrors.quantity}</span>}
-    </div>
-    
-      <button type="submit">{productToEdit ? "Redigera" : "Lägg till produkt" }</button>
-    {formErrors.Error && <span>{formErrors.Error}</span>}
-  </form>
+  {formErrors.Error && <span className="block text-sm text-red-500 mt-2">{formErrors.Error}</span>}
+</form>
+
   )
 }
 

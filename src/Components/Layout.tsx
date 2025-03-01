@@ -8,7 +8,7 @@ const Layout = () => {
           <main>
             <Outlet />              
           </main>
-          <footer>
+          <footer className="bg-slate-800 text-white p-4 shadow-md text-center">
               Moment 3, Avancerat React utveckling. 
           </footer>
       </>

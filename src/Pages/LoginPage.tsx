@@ -26,7 +26,7 @@ const LoginPage = () => {
             await login({email, password});
             navigate("/");
         } catch (error) {
-            setError("Det gick inte att logga in. Har du angett rätt inloggnings uppgifter?");
+            setError( String(error));
         }
     };
 

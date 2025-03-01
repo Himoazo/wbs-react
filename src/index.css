@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+main{
+  min-height: 100vh;
+}
+.active {
+    color: #60a5fa;
+    font-weight: bold;
+  }

@@ -12,6 +12,8 @@ const ProductComponent = ({ product }: { product: ProductInterface }) => {
 
 
   const deleteProduct = async () => {
+    const confirmation = window.confirm("Är du säker att du vill ta bort produkten?");
+  if (!confirmation) return;
     try {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -41,21 +43,47 @@ const ProductComponent = ({ product }: { product: ProductInterface }) => {
 
   return (
     <>
-        {formErrors.Error && <span>{formErrors.Error}</span>}
-        <div >
-              {product.productName} -
-              {product.price} -
-              {product.quantity}
-              <button onClick={()=> setEditing(true)}>Redigera</button>
-              <button onClick={deleteProduct}>Ta bort</button>
-        {editing ?
-          <div>
+      <tr className="hover:bg-gray-50">
+        {formErrors.Error && (
+          <td colSpan={4} className="border border-gray-300 px-4 py-2 text-red-500">
+            {formErrors.Error}
+          </td>
+        )}
+        <td className="border border-gray-300 px-4 py-2 text-left">{product.productName}</td>
+        <td className="border border-gray-300 px-4 py-2 text-left">{product.price} kr</td>
+        <td className="border border-gray-300 px-4 py-2 text-left">{product.quantity} st</td>
+        <td className="border border-gray-300 px-4 py-2 text-left">   
+          <button 
+            onClick={() => setEditing(true)} 
+            className="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition mr-2"
+          >
+            Redigera
+          </button>
+          <button 
+            onClick={deleteProduct} 
+            className="px-3 py-1 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+          >
+            Ta bort
+          </button>
+        </td>
+      </tr>
+      
+      {editing && (
+        <tr>
+          <td colSpan={4}  className="border border-gray-300 px-4 py-2">
             <ProductForm productToEdit={product} />
-            <button onClick={()=> setEditing(false)}>Avbryt</button>
-          </div>
-          : ""}
-        </div>
-      </>
+            <div className="mt-3 text-center">
+              <button 
+                onClick={() => setEditing(false)}
+                className="px-3 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
+              >
+                Avbryt
+              </button>
+            </div>
+          </td>
+        </tr>
+      )}
+    </>
   )
 }
 
