@@ -10,10 +10,7 @@ const ProductManagerPage = () => {
         <div>Product manager</div>
         {
            products?.map(product => 
-            <ProductComponent 
-              key={product.id} 
-              product={product}
-            />
+            <ProductComponent key={product.id} product={product}/>
           )
         }
       </>

@@ -1,12 +1,18 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { ProductInterface, FormErros } from "../Interfaces/ProductInterface";
 import { useProductContext } from "../Context/ProductContext"
 
-const ProductForm = () => {
+const ProductForm = ({productToEdit} : {productToEdit: ProductInterface}) => {
     const [addProduct, setCreateProduct] = useState<ProductInterface>({ productName: "", price: 0, quantity: 0 });
     const [formErrors, setFormErrors] = useState<FormErros>({})
 
     const { getProducts } = useProductContext();
+  
+  useEffect(() => {
+    if (productToEdit != null) {
+      setCreateProduct(productToEdit);
+    }
+  }, [productToEdit]);
 
      //Validation
   const validateForm = (event: any) => {
@@ -41,8 +47,12 @@ const ProductForm = () => {
             if (!token) {
                 return;
             }
-            const response = await fetch("http://localhost:5114/api/Products", {
-                method: "POST",
+          
+          const method = productToEdit != null ? "PUT" : "POST";
+          const url = productToEdit != null ? `http://localhost:5114/api/Products/${productToEdit.id}` : "http://localhost:5114/api/Products";
+          
+            const response = await fetch(url, {
+                method: method,
                 headers: {
                     "Content-type": "application/json",
                     "Authorization": "Bearer " + token
@@ -104,7 +114,7 @@ const ProductForm = () => {
       {formErrors.quantity && <span>{formErrors.quantity}</span>}
     </div>
     
-    <button type="submit">Lägg till produkt</button>
+      <button type="submit">{productToEdit ? "Redigera" : "Lägg till produkt" }</button>
     {formErrors.Error && <span>{formErrors.Error}</span>}
   </form>
   )
