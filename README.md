@@ -1,50 +1,16 @@
-# React + TypeScript + Vite
+# Mini lagerhanteringssystem med React 19
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ett minimalt lagerhanteringssystem som tillåter sin användare att:
 
-Currently, two official plugins are available:
+* Logga in
+* Skapa produkter
+* Redigera produkter
+* Ta bort producter
+* Se enskilda produkter
+* Och se en produktlista med samtliga produkter
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Applikationen är byggd med [React](https://react.dev/) och konsumerar en rest webbtjänst som är i sin tur byggd med ASP.NET 9, webbtjänstens code och dokumentation finns i detta [Repository](https://github.com/Himoazo/MiniWbs-for-React), webbtjänsten är publicerad på Railway och kan nås via denna [länk](https://miniwbs-for-react-production.up.railway.app/). 
 
-## Expanding the ESLint configuration
+Applikationen är stylad med [Tailwind](https://tailwindcss.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Denna applikation är publicerad på Netlify via denna [länk](https://react-wms.netlify.app/)
