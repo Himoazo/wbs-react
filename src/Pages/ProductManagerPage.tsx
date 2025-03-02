@@ -17,10 +17,10 @@ const ProductManagerPage = () => {
         <table className="w-full border-collapse border border-gray-300">
           <thead className="bg-gray-100">
             <tr>
-              <th className="border border-gray-300 px-4 py-2 text-left">Produktnamn</th>
-              <th className="border border-gray-300 px-4 py-2 text-left">Pris</th>
-              <th className="border border-gray-300 px-4 py-2 text-left">Saldo</th>
-              <th className="border border-gray-300 px-4 py-2 text-left">redigera/tabort</th>
+              <th className="border border-gray-300 px-4 py-2 text-center">Produktnamn</th>
+              <th className="border border-gray-300 px-4 py-2 text-center">Pris</th>
+              <th className="border border-gray-300 px-4 py-2 text-center">Saldo</th>
+              <th className="border border-gray-300 px-4 py-2 text-center">redigera/tabort</th>
             </tr>
           </thead>
               <tbody>

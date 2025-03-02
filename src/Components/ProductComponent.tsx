@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { FormErros } from '../Interfaces/ProductInterface'
 import { useProductContext } from '../Context/ProductContext'
 import ProductForm from './ProductForm'
+import { Link } from 'react-router-dom'
 
 const ProductComponent = ({ product }: { product: ProductInterface }) => {
   const [formErrors, setFormErrors] = useState<FormErros>({})
@@ -49,10 +50,14 @@ const ProductComponent = ({ product }: { product: ProductInterface }) => {
             {formErrors.Error}
           </td>
         )}
-        <td className="border border-gray-300 px-4 py-2 text-left">{product.productName}</td>
-        <td className="border border-gray-300 px-4 py-2 text-left">{product.price} kr</td>
-        <td className="border border-gray-300 px-4 py-2 text-left">{product.quantity} st</td>
-        <td className="border border-gray-300 px-4 py-2 text-left">   
+        <td className="border border-gray-300 px-4 py-2 text-center">
+          <Link to={`/product/${product.id}`} className="text-blue-600 hover:underline">
+            {product.productName}
+          </Link>
+        </td>
+        <td className="border border-gray-300 px-4 py-2 text-center">{product.price} kr</td>
+        <td className="border border-gray-300 px-4 py-2 text-center">{product.quantity} st</td>
+        <td className="border border-gray-300 px-4 py-2 text-center">   
           <button 
             onClick={() => setEditing(true)} 
             className="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition m-2"
