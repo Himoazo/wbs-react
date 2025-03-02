@@ -7,6 +7,7 @@ interface AuthProps { children: ReactNode }
 
 export const AuthProvider: React.FC<AuthProps> = ({children}) => {
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
 
     const login =async (loginData: Login) => {
         
@@ -48,6 +49,7 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
         const token = localStorage.getItem("token");
 
         if (!token) {
+            setLoading(false);
             return;
         }
 
@@ -68,6 +70,8 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
         } catch (error) {
             localStorage.removeItem("token");
             setUser(null);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -77,7 +81,7 @@ export const AuthProvider: React.FC<AuthProps> = ({children}) => {
 
 
     return (
-        <AuthenticateContext.Provider value={{login, logout, user}}>
+        <AuthenticateContext.Provider value={{login, logout, user, loading}}>
             {children}
         </AuthenticateContext.Provider>
     )

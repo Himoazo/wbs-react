@@ -4,6 +4,7 @@ import HomePage from "../Pages/HomePage";
 import LoginPage from "../Pages/LoginPage";
 import ProductManagerPage from "../Pages/ProductManagerPage";
 import ProtectedRoute from "./ProtectedRoute";
+import SingleProductComponent from "../Components/SingleProductComponent";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <HomePage />
+            },
+            {
+                path: "/product/:id",
+                element: <SingleProductComponent/>
             },
             {
                 path: "/login",
