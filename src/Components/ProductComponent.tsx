@@ -20,7 +20,7 @@ const ProductComponent = ({ product }: { product: ProductInterface }) => {
         return;
       } 
 
-      const response = await fetch(`http://localhost:5114/api/Products/${product.id}`, {
+      const response = await fetch(`https://miniwbs-for-react-production.up.railway.app/api/Products/${product.id}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });
@@ -77,7 +77,7 @@ const ProductComponent = ({ product }: { product: ProductInterface }) => {
                 onClick={() => setEditing(false)}
                 className="px-3 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition"
               >
-                Avbryt
+                Stäng redigerings fönster
               </button>
             </div>
           </td>

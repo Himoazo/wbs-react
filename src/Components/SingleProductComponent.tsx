@@ -13,7 +13,7 @@ const SingleProductComponent = () => {
     const getProduct = async()=> {
         try {
     
-            const response = await fetch(`http://localhost:5114/api/Products/${id}`);
+            const response = await fetch(`https://miniwbs-for-react-production.up.railway.app/api/Products/${id}`);
     
             if (!response.ok) { throw Error }
             

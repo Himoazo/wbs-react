@@ -7,7 +7,7 @@ const HomePage = () => {
       <h1 className="text-2xl font-bold mb-4 text-center">Lagerhanteringssystem</h1>
       <p className="text-center m-3 font-bold">Listan nedan visar samtliga produkter som finns på lagret för tillfället</p>
       <div className="overflow-x-auto">
-        {products.length > 1 ? 
+        {products.length > 0 ? 
         <table className="w-full border-collapse border border-gray-300">
         <thead className="bg-gray-100">
           <tr>

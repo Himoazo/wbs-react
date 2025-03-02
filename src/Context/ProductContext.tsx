@@ -15,7 +15,7 @@ export const ProductsProvider: React.FC<ProductProps> = ({children}) => {
       const getProducts = async () => {
         try {
   
-          const response = await fetch("http://localhost:5114/api/Products");
+          const response = await fetch("https://miniwbs-for-react-production.up.railway.app/api/Products");
     
           if (!response.ok) { throw Error }
           

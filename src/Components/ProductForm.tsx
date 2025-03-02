@@ -49,7 +49,7 @@ const ProductForm = ({productToEdit} : {productToEdit?: ProductInterface}) => {
             }
           
           const method = productToEdit != null ? "PUT" : "POST";
-          const url = productToEdit != null ? `http://localhost:5114/api/Products/${productToEdit.id}` : "http://localhost:5114/api/Products";
+          const url = productToEdit != null ? `https://miniwbs-for-react-production.up.railway.app/api/Products/${productToEdit.id}` : "https://miniwbs-for-react-production.up.railway.app/api/Products";
           
             const response = await fetch(url, {
                 method: method,
@@ -61,9 +61,7 @@ const ProductForm = ({productToEdit} : {productToEdit?: ProductInterface}) => {
             });
 
             if (!response.ok) {
-                if (response.status === 422) {
-                    throw "Denna product finns redan";
-                } else if (response.status === 500) {
+                if (response.status === 500) {
                   throw "Server fel, försök igen senare";
                 } else {
                   throw "Ett fel har inträffats, försök igen";
