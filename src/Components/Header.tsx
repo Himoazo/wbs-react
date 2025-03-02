@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../Context/AuthContext"
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const { user, logout } = useAuth();
   return (
     <header className="bg-slate-800 text-white p-4 shadow-md">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-        <h1 className="text-2xl font-bold tracking-wide mb-2 sm:mb-0 sm:mr-4">Lagersystem</h1>
+      <Link to="/"><h1 className="text-2xl font-bold tracking-wide mb-2 sm:mb-0 sm:mr-4">Lagersystem</h1></Link>
         <nav className="w-full sm:w-auto mb-4 sm:mb-0">
           <ul className="flex space-x-6 justify-center sm:justify-start">
             <li>

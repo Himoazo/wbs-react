@@ -88,7 +88,7 @@ const ProductForm = ({productToEdit} : {productToEdit?: ProductInterface}) => {
   </div>
   
   <div className="flex flex-col">
-    <label className="text-sm font-medium text-gray-700">Pris:</label>
+    <label className="text-sm font-medium text-gray-700">Pris: <small>(Max 10000)</small> </label>
     <input type="number" name="price" value={addProduct.price}
       onChange={(event) => setCreateProduct(p => ({ ...p, price: Number(event.target.value) }))}
       className="mt-1 p-2 border rounded-lg focus:ring focus:ring-blue-300"
@@ -97,7 +97,7 @@ const ProductForm = ({productToEdit} : {productToEdit?: ProductInterface}) => {
   </div>
   
   <div className="flex flex-col">
-    <label className="text-sm font-medium text-gray-700">Saldo:</label>
+    <label className="text-sm font-medium text-gray-700">Saldo: <small>(Max 10000)</small></label>
     <input type="number" name="quantity" value={addProduct.quantity}
       onChange={(event) => setCreateProduct(p => ({ ...p, quantity: Number(event.target.value) }))}
       className="mt-1 p-2 border rounded-lg focus:ring focus:ring-blue-300"/>
